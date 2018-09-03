@@ -15,6 +15,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
+/* GET event details */
 router.get('/:owner/events/:id', (req, res, next) => {
   Event.findById(req.params.id)
     .then(event => {
