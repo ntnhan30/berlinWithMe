@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
   profilePicture: String,
   info: String,
-  nbEvents:[String],
+  _events:[ {type: Schema.Types.ObjectId, ref: "Event"} ],
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -16,3 +16,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
+ 

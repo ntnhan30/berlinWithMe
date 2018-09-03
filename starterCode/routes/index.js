@@ -1,14 +1,10 @@
 const express = require('express');
-<<<<<<< HEAD
-const router  = express.Router();
-const Event = require("../models/Event")
-=======
 const router = express.Router();
-const Event = require("../models/Event")
-const User = require("../models/Event")
+const Event = require("../models/Event");
+const User = require("../models/User");
 
 
->>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   Event.find()
@@ -20,43 +16,55 @@ router.get('/', (req, res, next) => {
     })
 });
 
+/*Ana -created the adding rout */
+router.post("/event/add", (req,res,next)=>{
+  let newEvent={
+    name:req.body.name,
+    _owner:req.user._id,
+    address:{
+      street:req.body.street,
+      city:req.body.city,
+      postCode: req.body.postCode,
+    },
+    date: req.body.date,
+    time:req.body.time,
+    description: req.body.description,
+    phoneNumber: req.body.phoneNumber,
+    nbPeopple: req.body.nbPeopple
+  }
+  Event.create(newEvent)
+  .then( event => {
+    console.log("NEW EVENT:", event);
+    console.log( "REQ.user -->", req.user )
+
+    let events = req.user._events.slice(0);
+    events.push( event._id )
+    console.log( "_events ref", events )
+    User.findByIdAndUpdate( req.user._id, {_events: events} )
+    .then( updatedUser => {
+      console.log( "USER -->", updatedUser  )
+      res.redirect("/")
+    } )
+  })
+  });
+
 router.get('/:owner/events/:id', (req, res, next) => {
   Event.findById(req.params.id)
     .then(event => {
       res.render('event/event-details', {
-        event
+        event:event
       });
     })
 });
 
-<<<<<<< HEAD
+
+
 /*Add router */
 router.get("/event/add", (req,res,next)=>{
   res.render("event-add")
 })
 
-/*Ana -created the adding rout */
-router.post("/event/add", (req,res,next)=>{
-let newEvent={
-  name:req.body.name,
-  _owner:req.user._id,
-  address:{
-    street:req.body.street,
-    city:req.body.city,
-    postCode: req.body.postCode,
-  },
-  date: req.body.date,
-  time:req.body.time,
-  description: req.body.description,
-  phoneNumber: req.body.phoneNumber,
-  nbPeopple: req.body.nbPeopple,
-  status:req.body.status
-}
-Event.create(newEvent)
-.then(event=>{
-  res.redirect("/")
-})
-});
+
 
 /* Ana- created the edit route */
 router.get('/event/edit', (req, res, next) => {
@@ -97,7 +105,3 @@ router.post('/event/:id/edit', (req, res, next) => {
 
 
 module.exports = router;
-=======
-
-module.exports = router;
->>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f
