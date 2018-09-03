@@ -52,8 +52,18 @@ let newEvent={
   nbPeopple: req.body.nbPeopple,
 }
 Event.create(newEvent)
-.then(event=>{
-  res.redirect("/")
+.then( event => {
+  console.log("NEW EVENT:", event);
+  console.log( "REQ.user -->", req.user )
+
+  let events = req.user._events.slice(0);
+  events.push( event._id )
+  console.log( "_events ref", events )
+  User.findByIdAndUpdate( req.user._id, {_events: events} )
+  .then( updatedUser => {
+    console.log( "USER -->", updatedUser  )
+    res.redirect("/")
+  } )
 })
 .catch( err => { throw err } )
 });
