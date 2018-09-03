@@ -1,11 +1,35 @@
 const express = require('express');
+<<<<<<< HEAD
 const router  = express.Router();
 const Event = require("../models/Event")
+=======
+const router = express.Router();
+const Event = require("../models/Event")
+const User = require("../models/Event")
+
+
+>>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  Event.find()
+    .populate('_owner')
+    .then(events => {
+      res.render('index', {
+        events
+      });
+    })
 });
 
+router.get('/:owner/events/:id', (req, res, next) => {
+  Event.findById(req.params.id)
+    .then(event => {
+      res.render('event/event-details', {
+        event
+      });
+    })
+});
+
+<<<<<<< HEAD
 /*Add router */
 router.get("/event/add", (req,res,next)=>{
   res.render("event-add")
@@ -73,3 +97,7 @@ router.post('/event/:id/edit', (req, res, next) => {
 
 
 module.exports = router;
+=======
+
+module.exports = router;
+>>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f

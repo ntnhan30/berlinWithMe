@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Berlin With Me</h1>
 <p>Welcome to {{title}}</p>
 
@@ -14,3 +15,18 @@
 {{this.nbPeopple}}
 {{this.status}}
 {{/each}}
+=======
+<h1>Berlin With Me</h1><br>
+{{#each events}}
+<div class="eventDiv">
+    <a href="/{{this._owner.username}}/events/{{this._id}}">
+{{this.name}} <br>
+    </a>
+{{this.date}} <br>
+{{this.description}} <br>
+{{this._owner.username}}
+
+</div>
+
+{{/each}}
+>>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f

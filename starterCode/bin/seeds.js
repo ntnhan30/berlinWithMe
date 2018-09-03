@@ -12,17 +12,17 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-  Event.deleteMany(  )
-  .then(x=>{console.log(x + " were deleted")
-  })
+  // Event.deleteMany(  )
+  // .then(x=>{console.log(x + " were deleted")
+  // })
   Event.create(event)
   .then(events=>{
       console.log(events.length +  "were created" )
   })
 
-  User.deleteMany(  )
-  .then(x=>{console.log(x + " were deleted")
-  })
+  // User.deleteMany(  )
+  // .then(x=>{console.log(x + " were deleted")
+  // })
   User.create(user)
   .then(users=>{
       console.log(users.length +  "were created" )
