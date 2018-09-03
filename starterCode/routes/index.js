@@ -1,14 +1,9 @@
 const express = require('express');
-<<<<<<< HEAD
-const router  = express.Router();
-const Event = require("../models/Event")
-=======
 const router = express.Router();
 const Event = require("../models/Event")
-const User = require("../models/Event")
+const User = require("../models/User")
 
 
->>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f
 /* GET home page */
 router.get('/', (req, res, next) => {
   Event.find()
@@ -23,21 +18,25 @@ router.get('/', (req, res, next) => {
 /* GET event details */
 router.get('/:owner/events/:id', (req, res, next) => {
   Event.findById(req.params.id)
+  .populate('_owner')
     .then(event => {
       res.render('event/event-details', {
-        event
+        event,
+        isOwner:req.user.username === event._owner.username,
+        isNotOwner:req.user.username !== event._owner.username
+
       });
     })
 });
 
-<<<<<<< HEAD
 /*Add router */
 router.get("/event/add", (req,res,next)=>{
   res.render("event-add")
 })
 
 /*Ana -created the adding rout */
-router.post("/event/add", (req,res,next)=>{
+router.post("/event/adding", (req,res)=>{
+
 let newEvent={
   name:req.body.name,
   _owner:req.user._id,
@@ -51,17 +50,18 @@ let newEvent={
   description: req.body.description,
   phoneNumber: req.body.phoneNumber,
   nbPeopple: req.body.nbPeopple,
-  status:req.body.status
 }
 Event.create(newEvent)
 .then(event=>{
   res.redirect("/")
 })
+.catch( err => { throw err } )
 });
 
 /* Ana- created the edit route */
-router.get('/event/edit', (req, res, next) => {
+router.get('/:owner/events/:id/edit', (req, res, next) => {
   Event.findById(req.params.id)
+  .populate('_owner')
   .then(event=> {
     res.render("event-edit", {event:event})
    
@@ -71,7 +71,7 @@ router.get('/event/edit', (req, res, next) => {
   })
 });
 
-router.post('/event/:id/edit', (req, res, next) => {
+router.post('/:owner/events/:id/update', (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, {
       name:req.body.name,
       address:{
@@ -87,8 +87,18 @@ router.post('/event/:id/edit', (req, res, next) => {
       status:req.body.status
     }
    )
+   .populate('_owner')
   .then((event) => {
-    res.redirect('/event/' + req.params.id)
+    res.redirect('/')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+});
+
+router.get('/event/:id/delete', (req, res, next) => {
+  Event.findByIdAndRemove(req.params.id)  .then((event) => {
+    res.redirect('/')
   })
   .catch((error) => {
     console.log(error)
@@ -96,9 +106,4 @@ router.post('/event/:id/edit', (req, res, next) => {
 });
 
 
-
 module.exports = router;
-=======
-
-module.exports = router;
->>>>>>> 5d5648965db9d304594c377e5477200bcff38f3f

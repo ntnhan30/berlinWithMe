@@ -1,7 +1,7 @@
 
 <h1>Edit and event</h1>
 
-<form action="/event/{{event._id}}/edit/" method="post">
+<form action="/{{event._owner.username}}/events/{{event._id}}/update" method="post">
   Name: <input type="text" name="name" value="{{event.name}}">><br>
   Street <input type="text" name="street" value="{{event.address.street}}"><br>
   City <input type="text" name="city" value="{{event.address.city}}" ><br>
@@ -13,5 +13,5 @@
   Phone numver <input type="text" name=" phoneNumber" value="{{event.phoneNumber}}"><br>
   Number of People  <input type="text" name="nbPeople" value="{{event.nbPeople}}"><br>
   Status of the event  <input type="text" name="status" value="{{event.status}}"><br>
-  <button>Add an event!</button>
+  <button>Update</button>
 </form>
