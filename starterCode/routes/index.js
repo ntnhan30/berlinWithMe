@@ -31,7 +31,7 @@ router.get('/:owner/events/:id', (req, res, next) => {
 
 /*Add router */
 router.get("/event/add", (req,res,next)=>{
-  res.render("event-add")
+  res.render("event/event-add")
 })
 
 /*Ana -created the adding rout */
@@ -63,7 +63,7 @@ router.get('/:owner/events/:id/edit', (req, res, next) => {
   Event.findById(req.params.id)
   .populate('_owner')
   .then(event=> {
-    res.render("event-edit", {event:event})
+    res.render("event/event-edit", {event:event})
    
   })
   .catch((error) => {
@@ -96,7 +96,7 @@ router.post('/:owner/events/:id/update', (req, res, next) => {
   })
 });
 
-router.get('/event/:id/deleteeeeeee', (req, res, next) => {
+router.get('/event/:id/delete', (req, res, next) => {
   Event.findByIdAndRemove(req.params.id)  .then((event) => {
     res.redirect('/')
   })
