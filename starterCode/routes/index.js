@@ -47,13 +47,16 @@ router.post("/event/add", (req,res,next)=>{
     } )
   })
   });
-
+/* GET event details ****/
 router.get('/:owner/events/:id', (req, res, next) => {
   Event.findById(req.params.id)
   .populate('_owner')
     .then(event => {
       res.render('event/event-details', {
-        event:event
+        event,
+        isOwner:req.user.username === event._owner.username,
+        isNotOwner:req.user.username !== event._owner.username
+
       });
     })
 });
