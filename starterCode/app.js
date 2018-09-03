@@ -88,6 +88,8 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
-      
+    
+const user = require('./routes/user');
+app.use('/', user);
 
 module.exports = app;

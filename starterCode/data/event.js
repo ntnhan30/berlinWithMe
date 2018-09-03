@@ -11,9 +11,7 @@ module.exports = [
           link:"http://event-link.com/",
           description: "The most amazing event in Berlin",
           phoneNumber: "+49 098745643",
-          nbPeople: 2,
-          status: "available"
-
+          nbPeople: 2
     }
   ]
   
