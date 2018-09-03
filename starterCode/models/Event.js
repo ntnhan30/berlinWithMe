@@ -16,7 +16,7 @@ const eventSchema = new Schema({
   phoneNumber: String,
   nbPeople: Number,
   status: { type: String, enum: ["full", "available"], default: "available" },
-}, {
+ }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'

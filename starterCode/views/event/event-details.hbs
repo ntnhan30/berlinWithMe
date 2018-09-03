@@ -3,5 +3,13 @@
 {{event.date}} <br>
 {{event.description}} <br>
 {{event._owner.username}}
+{{#if isOwner }}
+<a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
+<a href="/event/{{event._id}}/delete">Delete</a>
+{{/if}}
+
+{{#if isNotOwner }}
+<a href="">Wanna Join</a>
+{{/if}}
 
 </div>

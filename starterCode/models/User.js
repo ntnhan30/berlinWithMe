@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
   profilePicture: String,
   info: String,
-  _events:[ {type: Schema.Types.ObjectId, ref: "Event"} ],
+  // _events:[ {type: Schema.Types.ObjectId, ref: "Event"} ],
 }, {
   timestamps: {
     createdAt: 'created_at',
