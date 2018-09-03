@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
-/* GET event details */
+/* GET event details ****/
 router.get('/:owner/events/:id', (req, res, next) => {
   Event.findById(req.params.id)
   .populate('_owner')
@@ -96,7 +96,7 @@ router.post('/:owner/events/:id/update', (req, res, next) => {
   })
 });
 
-router.get('/event/:id/delete', (req, res, next) => {
+router.get('/event/:id/deleteeeeeee', (req, res, next) => {
   Event.findByIdAndRemove(req.params.id)  .then((event) => {
     res.redirect('/')
   })
