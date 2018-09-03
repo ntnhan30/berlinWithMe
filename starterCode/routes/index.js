@@ -135,7 +135,7 @@ router.post('/:owner/events/:id/update', (req, res, next) => {
   })
 });
 
-router.get('/event/:id/delete', (req, res, next) => {
+router.get('/event/:id/deleteeeeeee', (req, res, next) => {
   Event.findByIdAndRemove(req.params.id)  .then((event) => {
     res.redirect('/')
   })
