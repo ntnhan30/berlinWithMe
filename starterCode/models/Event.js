@@ -3,13 +3,13 @@ const Schema   = mongoose.Schema;
 
 const eventSchema = new Schema({
   name: String,
-  adress:{
+  address:{
     street: String,
     city:String,
     postCode:Number,
   },
-   date: Date,
-   time: String,
+  date: Date,
+  time: String,
   _owner: {type: Schema.Types.ObjectId , ref:"User"},
   link: String,
   description: String,

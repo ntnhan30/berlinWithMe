@@ -1,2 +1,16 @@
 <h1>Berlin With Me</h1>
 <p>Welcome to {{title}}</p>
+
+{{#each events}}
+{{this.name}}
+{{this.address.street}}
+{{this.address.city}}
+{{this.address.postCode}}
+{{this.date}}
+{{this.time}}
+{{this.link}}
+{{this.description}}
+{{this.phoneNumber}}
+{{this.nbPeopple}}
+{{this.status}}
+{{/each}}
