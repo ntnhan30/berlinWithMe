@@ -1,2 +1,13 @@
-<h1>Berlin With Me</h1>
-<a href="" class="btn">button</a>
+<h1>Berlin With Me</h1><br>
+{{#each events}}
+<div class="eventDiv">
+    <a href="/{{this._owner.username}}/events/{{this._id}}">
+{{this.name}} <br>
+    </a>
+{{this.date}} <br>
+{{this.description}} <br>
+{{this._owner.username}}
+
+</div>
+
+{{/each}}
