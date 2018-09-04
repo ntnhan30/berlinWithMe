@@ -1,6 +1,22 @@
-<h1>My profile!</h1>
+<h1>The profile of <strong>{{user.username}}  </strong></h1>
+
+<h3>About me </h3> <p> {{user.info}}</p><br>
+
+ <img src="{{user.imgPath}}" alt="">
+
+<h4>My events</h4>
+<ul>
+{{#each user._events}}<br>
+{{this.name}}
+{{/each}}
+</ul>
+
+<br><br>
+
+<form  action="/profile/{{user._id}}/delete" method="POST">
+    <button >Delete</button>
+    </form><br><br>
+
+<a href="profile/{{user._id}}/edit">Edit me!</a>
 
 
-<img src="{{user.profilePicture}}" alt="">
-{{user.username}}
-{{user.nbEvents}}

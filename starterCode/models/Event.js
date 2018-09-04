@@ -14,7 +14,7 @@ const eventSchema = new Schema({
   link: String,
   description: String,
   phoneNumber: String,
-  nbPeople: Number,
+  nbPeople: String,
   status: { type: String, enum: ["full", "available"], default: "available" },
  }, {
   timestamps: {
