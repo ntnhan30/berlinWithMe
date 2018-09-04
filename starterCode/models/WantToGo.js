@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const linkSchema = new Schema({
+const WantToGoSchema = new Schema({
  _event:{type:Schema.Types.ObjectId , ref:"Event"},
  _user:{type:Schema.Types.ObjectId, ref:"User"}
 
@@ -12,5 +12,5 @@ const linkSchema = new Schema({
   }
 });
 
-const Link = mongoose.model('Link', linkSchema);
-module.exports = Link;
+const WantToGo = mongoose.model('WantToGo', WantToGoSchema);
+module.exports = WantToGo;

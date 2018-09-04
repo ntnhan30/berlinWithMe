@@ -1,15 +1,17 @@
 <div class="eventDiv">
-{{event.name}} <br>
-{{event.date}} <br>
-{{event.description}} <br>
-{{event._owner.username}}
-{{#if isOwner }}
-<a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
-<a href="/event/{{event._id}}/delete">Delete</a>
-{{/if}}
+    {{event.name}} <br> {{event.date}} <br> {{event.description}} <br> {{event._owner.username}} {{#if isOwner }}
+    <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
+    <a href="/event/{{event._id}}/delete">Delete</a>
+    {{/if}} {{#if isJoined }} {{event.phoneNumber}}
+    <a href="/event/{{event._id}}/leave">Leave</a>
+    {{else}} {{#if isAvailable }}
+    <a href="/event/{{event._id}}/join">Wanna Join</a>
+    {{else}}
+    <a href="/event/{{event._id}}/join">Join WaittingList</a>
+    {{/if}} {{/if}}
+    <p>
+        Attendees: <br> {{#each attendees}} {{this._user.username}} <br> {{/each }}
 
-{{#if isNotOwner }}
-<a href="">Wanna Join</a>
-{{/if}}
-
-</div>
+        <pre>
+{{event}}
+</pre>
