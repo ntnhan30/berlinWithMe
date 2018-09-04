@@ -12,6 +12,9 @@ router.get('/', (req, res, next) => {
   Event.find()
     .populate('_owner')
     .then(events => {
+      events.sort(function(a,b){
+        return a.date - b.date;
+        });
       res.render('index', {
         events
       });

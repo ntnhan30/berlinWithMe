@@ -22,7 +22,11 @@
     {{/if}}
     {{/if}}
 
-        Attendees: <br> {{#each joiningList}} {{this._user.username}} <br> {{/each }}
+        Attendees: <br> {{#each joiningList}} 
+        <a href="/profile/{{this._user._id}}">
+        {{this._user.username}}
+        </a>
+          <br> {{/each }}
         WaittingList: <br> {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
 
         <pre>
