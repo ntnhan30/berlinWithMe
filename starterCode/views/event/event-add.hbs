@@ -2,15 +2,22 @@
 
 <form action="/event/adding" method="post">
   Name: <input type="text" name="name"><br>
-  Street <input type="text" name="street"><br>
-  City <input type="text" name="city"><br>
-  Post Code <input type="text" name="postCode"><br>
-  Date: <input type="text" name="date"><br>
-  Time: <input type="text" name="time"><br>
+  Location : <select type="text" name="location">
+  <option value="Neukölln‎" >Neukölln‎</option>
+  <option value="Friedrichshain">Friedrichshain</option>
+  <option value="Kreuzberg‎">Kreuzberg‎</option>
+  <option value="Mitte">Mitte</option>
+  <option value="Charlottenburg">Charlottenburg</option>
+  <option value="other">other</option>
+</select>
+  <br>
+  Date: <input type="date" name="date"><br>
+  Time: <input type="time" name="time"><br>
   Link: <input type="text" name="link"><br>
-  Description:  <input type="text" name="description"><br>
+  Description: <br>
+   <textarea rows="7" cols="60" type="text" name="description"></textarea><br>
   Phone number <input type="text" name="phoneNumber"><br>
-  Number of People  <input type="number" name="nbPeople"><br>
+  Number of People  <input type="number" name="nbPeople" placeholder="is required"><br>
   {{!-- Status of the event  <input type="text" name="status"><br> --}}
   <button>Add an event!</button>
 </form>

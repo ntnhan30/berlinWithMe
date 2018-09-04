@@ -24,24 +24,36 @@ router.get('/:owner/events/:id', ensureLoggedIn('/auth/login'), (req, res, next)
       Event.findById(req.params.id).populate('_owner'),
       WantToGo.find({
         _event: req.params.id
-      }).populate('_user')
+      }).populate('_user'),
     ])
     .then(([event, attendees]) => {
-      console.log("PHONE:", event.phoneNumber);
-      let joined = attendees.map(function (ele) {
+      let wannaJoin = attendees.map(function (ele) {
+        return ele._user._id.toString();
+      });
+      
+      let joiningList = attendees.slice(0, event.nbPeople);
+     
+      let WaitingList = attendees.slice(event.nbPeople, wannaJoin.length);
+    
+      let joined = joiningList.map(function (ele) {
         return ele._user._id.toString();
       }).includes(req.user._id.toString());
-
-      let noPeopleGoing = attendees.map(function (ele) {
-        return ele._user._id;
-      }).length
+      
+      let waiting = WaitingList.map(function (ele) {
+        return ele._user._id.toString();
+      }).includes(req.user._id.toString());
+     
+      let noPeopleGoing = joiningList.length;
+  
       res.render('event/event-details', {
         event,
-        attendees,
+        joiningList,
+        WaitingList,
         isOwner: req.user.username === event._owner.username,
         isNotOwner: req.user.username !== event._owner.username,
         isJoined: joined,
-        isAvailable: noPeopleGoing < event.nbPeople
+        isAvailable: noPeopleGoing < event.nbPeople,
+        isWaiting: waiting
       });
     });
 });
@@ -53,16 +65,16 @@ router.get("/event/add", ensureLoggedIn('/auth/login'), (req, res, next) => {
 
 /*Ana -created the adding rout */
 router.post("/event/adding", (req, res) => {
+  console.log("DEBUG", req.body.date);
+  console.log("DEBUG", req.body.time);
+  
   let newEvent = {
     name: req.body.name,
     _owner: req.user._id,
-    address: {
-      street: req.body.street,
-      city: req.body.city,
-      postCode: req.body.postCode,
-    },
-    date: req.body.date,
-    time: req.body.time,
+    location: req.body.location,
+    date:new Date(req.body.date + ' ' + req.body.time),
+    // req.body.date,
+    // time: req.body.time,
     description: req.body.description,
     phoneNumber: req.body.phoneNumber,
     nbPeople: req.body.nbPeople,
@@ -151,6 +163,26 @@ router.get('/event/:id/join', (req, res, next) => {
 
 });
 
+router.get('/event/:id/joinWaittingList', (req, res, next) => {
+
+  let newWantToGo = {
+    _event: req.params.id,
+    _user: req.user._id,
+  }
+  WantToGo.create(newWantToGo)
+    .then((event) => {
+      Event.findById(req.params.id)
+        .populate('_owner')
+        .then(event => {
+          res.redirect('/' + event._owner.username + '/events/' + event._id)
+        })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+});
+
 router.get('/event/:id/leave', (req, res, next) => {
   WantToGo.deleteOne({
       $and: [{
@@ -163,17 +195,12 @@ router.get('/event/:id/leave', (req, res, next) => {
       Event.findById(req.params.id)
         .populate('_owner')
         .then(event => {
-          console.log(event._owner.username)
-          console.log(event._id)
           res.redirect('/' + event._owner.username + '/events/' + event._id)
         })
-
     })
     .catch((error) => {
       console.log(error)
     })
-
 });
-
 
 module.exports = router;

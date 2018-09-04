@@ -3,18 +3,16 @@ const Schema   = mongoose.Schema;
 
 const eventSchema = new Schema({
   name: String,
-  address:{
-    street: String,
-    city:String,
-    postCode:Number,
+  location:{
+    type: String, enum: ["Neukölln‎", "Friedrichshain", "Kreuzberg‎", "Mitte", "Charlottenburg", "other"], default: "other" 
   },
   date: Date,
-  time: String,
+  // time: String,
   _owner: {type: Schema.Types.ObjectId , ref:"User"},
   link: String,
   description: String,
   phoneNumber: String,
-  nbPeople: Number,
+  nbPeople: { type: Number, required: true },
   status: { type: String, enum: ["full", "available"], default: "available" },
  }, {
   timestamps: {

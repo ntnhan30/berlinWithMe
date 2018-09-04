@@ -1,16 +1,29 @@
 <div class="eventDiv">
-    {{event.name}} <br> {{event.date}} <br> {{event.description}} <br> {{event._owner.username}} {{#if isOwner }}
+    {{event.name}} <br> 
+    {{event.date}} <br> 
+    {{event.description}} <br> {{event._owner.username}}
+     {{#if isOwner }}
     <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
     <a href="/event/{{event._id}}/delete">Delete</a>
-    {{/if}} {{#if isJoined }} {{event.phoneNumber}}
+    {{/if}} 
+    
+    {{#if isJoined }} 
+    {{event.phoneNumber}}
     <a href="/event/{{event._id}}/leave">Leave</a>
-    {{else}} {{#if isAvailable }}
+     {{else}}
+    {{#if isAvailable }}
     <a href="/event/{{event._id}}/join">Wanna Join</a>
-    {{else}}
-    <a href="/event/{{event._id}}/join">Join WaittingList</a>
-    {{/if}} {{/if}}
-    <p>
-        Attendees: <br> {{#each attendees}} {{this._user.username}} <br> {{/each }}
+     {{else}}
+      {{#if isWaiting }}
+    <a href="/event/{{event._id}}/leave">Leave WaittingList</a>
+     {{else}}
+    <a href="/event/{{event._id}}/joinWaittingList">Join WaittingList</a>
+    {{/if}}
+    {{/if}}
+    {{/if}}
+
+        Attendees: <br> {{#each joiningList}} {{this._user.username}} <br> {{/each }}
+        WaittingList: <br> {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
 
         <pre>
 {{event}}
