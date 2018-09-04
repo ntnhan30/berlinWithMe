@@ -1,0 +1,8 @@
+<h1>Edit page</h1>
+
+<form action="/profile/{{user._id}}/edit" method="post" enctype="multipart/form-data">
+Name: <input type="text" name="username" value="{{user.username}}"><br><br>
+About me: <textarea rows="4" cols="50" type="text" name="info" value="{{user.info}}"></textarea><br><br>
+Add your photo: <input type="file" name="photo" value="{{user.photo}}"><br><br>
+<button>Submit</button>
+</form>

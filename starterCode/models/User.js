@@ -4,7 +4,8 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  profilePicture: String,
+  imgName: String,
+  imgPath: String,
   info: String,
   _events:[ {type: Schema.Types.ObjectId, ref: "Event"} ],
 }, {

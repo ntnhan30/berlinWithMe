@@ -12,7 +12,11 @@ const eventSchema = new Schema({
   link: String,
   description: String,
   phoneNumber: String,
+<<<<<<< HEAD
   nbPeople: { type: Number, required: true },
+=======
+  nbPeople: String,
+>>>>>>> fdc86e8b478603640882cd3bd116583eada54768
   status: { type: String, enum: ["full", "available"], default: "available" },
  }, {
   timestamps: {
