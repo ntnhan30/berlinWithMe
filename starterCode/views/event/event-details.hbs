@@ -1,14 +1,24 @@
 <div class="eventDiv">
-    {{event.name}} <br> 
+    <h3>
+    {{event.name}}
+    </h3>  <br> 
     {{event.date}} <br> 
-    {{event.description}} <br> {{event._owner.username}}
-     {{#if isOwner }}
-    <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
-    <a href="/event/{{event._id}}/delete">Delete</a>
-    {{/if}} 
-    
+    <p> Organizer: {{event._owner.username}} <br>
+     Details: {{event.description}} 
+     </p>
+
+    <p>
+ Attendees:{{#each joiningList}} 
+        <a href="/profile/{{this._user._id}}">
+        {{this._user.username}}
+        </a>
+         {{/each }} <br>
+        WaittingList: {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
+</p> 
     {{#if isJoined }} 
-    {{event.phoneNumber}}
+    <p>
+   Contact details: {{event.contact}}
+    </p>
     <a href="/event/{{event._id}}/leave">Leave</a>
      {{else}}
     {{#if isAvailable }}
@@ -22,13 +32,13 @@
     {{/if}}
     {{/if}}
 
-        Attendees: <br> {{#each joiningList}} 
-        <a href="/profile/{{this._user._id}}">
-        {{this._user.username}}
-        </a>
-          <br> {{/each }}
-        WaittingList: <br> {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
+      {{#if isOwner }}
+    <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
+    <a href="/event/{{event._id}}/delete">Delete</a>
+    {{/if}} 
 
-        <pre>
+        </div>
+
+        {{!-- <pre>
 {{event}}
-</pre>
+</pre> --}}

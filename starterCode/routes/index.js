@@ -68,18 +68,15 @@ router.get("/event/add", ensureLoggedIn('/auth/login'), (req, res, next) => {
 
 /*Ana -created the adding rout */
 router.post("/event/adding", (req, res) => {
-  console.log("DEBUG", req.body.date);
-  console.log("DEBUG", req.body.time);
-  
+
   let newEvent = {
     name: req.body.name,
     _owner: req.user._id,
     location: req.body.location,
     date:new Date(req.body.date + ' ' + req.body.time),
-    // req.body.date,
-    // time: req.body.time,
+    link: req.body.link,
     description: req.body.description,
-    phoneNumber: req.body.phoneNumber,
+    contact: req.body.contact,
     nbPeople: req.body.nbPeople,
   }
   Event.create(newEvent)
@@ -204,6 +201,34 @@ router.get('/event/:id/leave', (req, res, next) => {
     .catch((error) => {
       console.log(error)
     })
+});
+
+router.get('/search', (req, res, next) => {
+  let event = req.query.event;
+  console.log("THIS IS THE EVENT YOU WANT",event);
+
+  Event.find({
+    $or: [{
+      name: new RegExp(''+event+'',"ig")
+    }, {
+      description: new RegExp(''+event+'',"ig")
+    },
+    {
+      location: new RegExp(''+event+'',"ig")
+    }
+  ]
+  })
+  .populate('_owner')
+  .then(events => {
+    events.sort(function(a,b){
+      return a.date - b.date;
+      });
+    res.render('index', {
+      events
+ }) })
+ .catch((error) => {
+  console.log(error)
+})
 });
 
 module.exports = router;

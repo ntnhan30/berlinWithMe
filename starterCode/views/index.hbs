@@ -1,19 +1,25 @@
 <h1>Berlin With Me</h1><br>
+
+<form action="/search" method="get">
+  <input type="text" name="event" placeholder="Event">
+  <button>Search for event</button>
+</form> <br>
+
 {{#each events}}
 <div class="eventDiv">
-    <a href="/{{this._owner.username}}/events/{{this._id}}">
-{{this.name}} <br>
-    </a>
+    <h3>
+     <a href="/{{this._owner.username}}/events/{{this._id}}">
+{{this.name}}
+    </a> <br>
+    </h3>
 {{this.date}} <br>
-{{this.description}} <br>
-{{this.link}}<br>
-{{this.nbPeople}}
-{{this.phoneNumber}}
-<p{{this.user}}</p>
-<a href= "/profile/{{this._id}}">{{this._owner.username}} </a>
+<a href="{{this.link}}" target="_blank">Link to the event</a>
+<br>
+{{this.location}} <br>
+<p>
+    Organizer :{{this._owner.username}} <br>
+</p>
 
 </div>
-
-
 
 {{/each}}

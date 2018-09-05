@@ -3,6 +3,13 @@ const router = express.Router();
 const User = require("../models/User");
 const uploadCloud = require('../config/cloudinary.js');
 
+router.get('/user-profile', (req, res, next) => {
+  // User.findById(req.params.id)
+  // .populate('_events')
+  // .then(user => {
+  res.render("user/profile")
+  });
+
 router.get('/profile/:id', (req, res, next) => {
     User.findById(req.params.id)
     .populate('_events')

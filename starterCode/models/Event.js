@@ -11,7 +11,7 @@ const eventSchema = new Schema({
   _owner: {type: Schema.Types.ObjectId , ref:"User"},
   link: String,
   description: String,
-  phoneNumber: String,
+  contact: String,
   nbPeople: { type: Number, required: true },
   status: { type: String, enum: ["full", "available"], default: "available" },
  }, {
