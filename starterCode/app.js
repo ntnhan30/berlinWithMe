@@ -77,6 +77,7 @@ require('./passport')(app);
 app.use((req,res,next) => {
   console.log("I WAS TRIGGERED");
   res.locals.isConnected = req.isAuthenticated()
+  res.locals.currentUser = req.user;
   // res.locals.isAdmin = req.user && req.user.role === 'ADMIN'
   // res.locals.isOwner = req.user.username === event._owner.username;
   next()

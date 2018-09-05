@@ -1,4 +1,5 @@
 <div class="eventDiv">
+  <div class="eventText">
     <h3>
     {{event.name}}
     </h3>  <br> 
@@ -36,7 +37,7 @@
     <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
     <a href="/event/{{event._id}}/delete">Delete</a>
     {{/if}} 
-
+         </div>
         </div>
 
         {{!-- <pre>

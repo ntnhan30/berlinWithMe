@@ -10,13 +10,12 @@
 {{this.name}}
 {{/each}}
 </ul>
-
 <br><br>
 
+{{#if isUser}}
 <form  action="/{{user._id}}/delete" method="POST">
     <button >Delete</button>
     </form><br><br>
-
 <a href="/profile/{{user._id}}/edit">Edit me!</a>
-
+{{/if}}
 

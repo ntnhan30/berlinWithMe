@@ -6317,9 +6317,35 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: black; }
+
+.eventsDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; }
 
 .eventDiv {
-  border: 5px solid #5cdad3; }
+  border: 1px solid #f1eaea;
+  width: 70%;
+  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.767);
+  padding: 2%; }
+
+header {
+  font-family: 'Shadows Into Light', cursive;
+  background-color: #c8ff00;
+  text-align: center;
+  height: 150px; }
+
+.eventText {
+  width: 80%;
+  border: 5px solid #da5c5c; }
+
+.searchDiv {
+  height: 50px;
+  width: 300px;
+  margin: auto;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

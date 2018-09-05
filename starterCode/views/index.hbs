@@ -1,10 +1,21 @@
-<h1>Berlin With Me</h1><br>
+<header>
+<div class="headerText">
+<h1>Berlin With Me</h1>
+</div>
+<div class="headerImg1">
+    <img src="https://media.giphy.com/media/PvKlwYTiKATRe/giphy.gif" alt="">
+</div>
+</header>
 
-<form action="/search" method="get">
-  <input type="text" name="event" placeholder="Event">
-  <button>Search for event</button>
+<div class="searchDiv">
+<form action="/search" method="get" "form-inline">
+  <input type="text" name="event" placeholder="Events" "form-control-plaintext" id="staticEmail2">
 </form> <br>
+</div>
 
+
+
+<div class="eventsDiv ">
 {{#each events}}
 <div class="eventDiv">
     <h3>
@@ -12,14 +23,15 @@
 {{this.name}}
     </a> <br>
     </h3>
-{{this.date}} <br>
+    date: {{this.date}} <br>
+    readable date: {{this.readableDate}} <br>
+    joining time: {{this.hours}}:{{this.minutes}}
 <a href="{{this.link}}" target="_blank">Link to the event</a>
 <br>
 {{this.location}} <br>
 <p>
     Organizer :{{this._owner.username}} <br>
 </p>
-
 </div>
-
 {{/each}}
+</div>

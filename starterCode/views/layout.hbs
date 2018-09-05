@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -16,7 +17,7 @@
 
     {{#if isConnected}}
     <a href="/auth/logout">Logout</a>
-    <a href="/user-profile">Your Profile</a>
+    <a href="/profile/{{currentUser._id}}">Your Profile</a>
     <a href="/event/add">Create Event</a>
 
     {{else}}
