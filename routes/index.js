@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
         event.readableDate = event.date.toString().substring(0,21);
         return event;
       });
-      console.log("THIS IS  THE TIME",events[0].date.toString().substring(0,21));
+      // console.log("THIS IS  THE TIME",events[0].date.toString().substring(0,21));
       res.render('index', {
         events
       });
