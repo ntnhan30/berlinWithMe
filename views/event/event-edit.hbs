@@ -1,18 +1,48 @@
+<h1>Edit page</h1>
 
-<h1>Edit and event</h1>
-
-<form action="/events/{{event._id}}/update" method="post">
-{{!-- <form action="/{{event._owner.username}}/events/{{event._id}}/update" method="post"> --}}
-  Name: <input type="text" name="name" value="{{event.name}}"><br>
-  Street <input type="text" name="street" value="{{event.address.street}}"><br>
-  City <input type="text" name="city" value="{{event.address.city}}" ><br>
-  Post Code <input type="text" name="postCode"  value="{{event.address.postCode}}"><br>
-  Date: <input type="text" name="date" value="{{event.date}}"><br>
-  Time: <input type="text" name="time" value="{{event.time}}"><br>
-  Link: <input type="text" name="link" value="{{event.link}}"><br>
-  Description:  <input type="text" name="description" value="{{event.description}}"><br>
-  Phone numver <input type="text" name="phoneNumber" value="{{event.phoneNumber}}"><br>
-  Number of People  <input type="number" name="nbPeople" value="{{event.nbPeople}}"><br>
-  Status of the event  <input type="text" name="status" value="{{event.status}}"><br>
-  <button>Update</button>
-</form>
+  <div class="row">
+    <div class="col-md-4 ">
+      <form action="/events/{{event._id}}/update" method="post">
+        <div class="form-group">
+          <label for="nameExampleInput">Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput"  type="text" name="name" value="{{event.name}}" >
+        </div>
+      <div class="form-group">
+         <label>Location</label>
+        <select type="text" class="form-control" name="location" value="{{event.location}}">
+            <option value="Neukölln‎" >Neukölln‎</option>
+            <option value="Friedrichshain">Friedrichshain</option>
+            <option value="Kreuzberg‎">Kreuzberg‎</option>
+            <option value="Mitte">Mitte</option>
+            <option value="Charlottenburg">Charlottenburg</option>
+            <option value="other">other</option>
+        </select>
+          <div class="form-group">
+            <label for="nameExampleInput">Date</label>
+              <input class="form-controlç" type="date" name="date" value="{{event.date}}">
+          </div>
+      <div class="form-group">
+          <label for="nameExampleInput">Time</label>
+      <input class="form-control" type="time" name="time" value="{{event.time}}">
+          </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Link</label>
+        <input class="form-control" type="text" name="link"  value="{{event.link}}">
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Description</label>
+        <textarea rows="7" cols="60" class="form-control" type="text" name="description"  value="{{event.description}}"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Phone number</label>
+        <input type="text" class="form-control" name="phoneNumber" value="{{event.phoneNumber}}">
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Number of people</label>
+        <input type="number" name="nbPeople" placeholder="is required"  value="{{event.nbPeople}}">
+        <button class="btn btn-primary">Edit!</button>
+      </div>
+      
+        </form>
+      </div>
+    </div>
