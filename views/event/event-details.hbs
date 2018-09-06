@@ -1,9 +1,13 @@
 
-  <div class="eventText">
+  <div class="mainEventDetails">
+
+  
+  <div class="eventDetailsDiv card border-dark mb-3">
     <h3>
     {{event.name}}
     </h3>  <br> 
-    {{event.date}} <br> 
+    {{event.readableDate}} <br> 
+    {{event.location}} <br> 
     <p> Organizer: {{event._owner.username}} <br>
      Details: {{event.description}} 
      </p>
@@ -38,5 +42,6 @@
     {{!-- <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a> --}}
     <a href="/event/{{event._id}}/delete">Delete</a>
     {{/if}} 
+         </div>
          </div>
         

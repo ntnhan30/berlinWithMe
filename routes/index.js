@@ -41,6 +41,7 @@ router.get('/events/:id', ensureLoggedIn('/auth/login'), (req, res, next) => {
       }).populate('_user'),
     ])
     .then(([event, attendees]) => {
+      event.readableDate = event.date.toString().substring(0,21);
       let wannaJoin = attendees.map(function (ele) {
         return ele._user._id.toString();
       });

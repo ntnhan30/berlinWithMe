@@ -26,6 +26,34 @@
   padding: 2%;
 }
 
+.mainEventDetails:hover {
+  background-image: url(images/orange.png);
+  background-size: cover;
+  width: auto;
+  height: 900px
+}
+
+// .eventDetailsDiv :hover {
+//   width: 40%;
+//   margin: 10% auto auto auto;
+//   padding: 2%;
+//   background-image: none;
+// }
+.eventDetailsDiv{
+  width: 40%;
+  margin: 5% auto auto auto;
+  padding: 2%;
+}
+
+.navLogo{
+  font-family: 'Shadows Into Light', cursive;
+  // font-size: 25px
+
+}
+#userName{
+  color: white;
+  // font-size: 17px
+}
 header {
   font-family: 'Shadows Into Light', cursive;
   // background-color: rgb(200, 255, 0);

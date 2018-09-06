@@ -6331,6 +6331,23 @@ a.text-dark:hover, a.text-dark:focus {
   margin: 20px;
   padding: 2%; }
 
+.mainEventDetails:hover {
+  background-image: url(images/orange.png);
+  background-size: cover;
+  width: auto;
+  height: 900px; }
+
+.eventDetailsDiv {
+  width: 40%;
+  margin: 5% auto auto auto;
+  padding: 2%; }
+
+.navLogo {
+  font-family: 'Shadows Into Light', cursive; }
+
+#userName {
+  color: white; }
+
 header {
   font-family: 'Shadows Into Light', cursive;
   text-align: center;

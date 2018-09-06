@@ -6,24 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="/">Berlin with me</a>
+  <a class="navbar-brand navLogo" href="/">Berlin with me</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        {{!-- <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a> --}}
       </li>
       {{#if isConnected}}
       <li class="nav-item">
-         <a class="nav-link" href="/profile">Your Profile</a>
+         <a class="nav-link navLogo" href="/profile/" id="userName">{{currentUser.username}}</a>
         {{!-- <a class="nav-link" href="/profile/{{currentUser._id}}">Your Profile</a> --}}
       </li>   
       <li class="nav-item">

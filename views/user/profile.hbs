@@ -1,10 +1,10 @@
-<div class="container">
- <div class="row">
-    <div class= "col-md-4 profile-container">
+<div class= "col-md-4 profile-container">
         <h1>
-            The profile of <strong>{{user.username}}</strong>
+            <strong>{{user.username}}</strong>
             <small>
+                {{#if isUser}}
                 <a class="btn btn-primary btn-sm" href="/profile/edit">Edit me</a>
+                {{/if}}
             </small>
         </h1>
         <img src="{{user.imgPath}}" class="img-fluid" alt="">
@@ -16,7 +16,7 @@
             <h4>My events</h4>
             <div class="row">
             {{#each user._events}}<br>
-                <div class="col-md-3">
+                <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{this.name}}</h5>

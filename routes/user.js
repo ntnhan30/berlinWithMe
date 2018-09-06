@@ -3,19 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const uploadCloud = require('../config/cloudinary.js');
 
-
-router.get('/profile', (req, res, next) => {
-    User.findById(req.user._id)
-    .populate('_events')
-    .then(user => {
-        res.render("user/profile", {
-          user:user,
-          isUser: req.user._id == req.params.id
-        })
-        });
-      })
-  
-
 router.get('/profile/edit', (req, res, next) => {
   User.findById(req.user._id)
   .then(user=> {
@@ -26,6 +13,34 @@ router.get('/profile/edit', (req, res, next) => {
     console.log(error)
   })
 });
+
+
+
+router.get('/profile/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .populate('_events')
+    .then(user => {
+      res.render("user/profile", {
+        user: user,
+        isUser: req.user._id == req.params.id
+      })
+    });
+})
+
+router.get('/profile', (req, res, next) => {
+  User.findById(req.user._id)
+    .populate('_events')
+    .then(user => {
+      res.render("user/profile", {
+        user: user,
+        isUser: req.user._id == req.params.id
+      })
+    });
+})
+
+      
+  
+
 
 
 
