@@ -49,7 +49,7 @@ router.post('/profile/:id/edit', uploadCloud.single('photo'),(req, res, next) =>
     username,info,imgPath ,imgName 
   } )
   .then((user) => {
-    res.redirect('/profile/' )
+    res.redirect('/profile/'+user._id )
   })
   .catch((error) => {
     console.log(error)
