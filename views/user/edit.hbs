@@ -1,8 +1,24 @@
-<h1>Edit page</h1>
+<h1>Eddit me!</h1>
 
-<form action="/profile/{{user._id}}/edit" method="post" enctype="multipart/form-data">
-Name: <input type="text" name="username" value="{{user.username}}"><br><br>
-About me: <textarea rows="4" cols="50" type="text" name="info" value="{{user.info}}"></textarea><br><br>
-Add your photo: <input type="file" name="photo" value="{{user.photo}}"><br><br>
-<button>Submit</button>
-</form>
+  <div class="row">
+    <div class="col-md-4 ">
+    <form action="/profile/{{user._id}}/edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="nameExampleInput">Name</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" name="username" value="{{user.username}}" >
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">About me</label>
+      <textarea rows="4" cols="50" type="text" name="info" value="{{user.info}}" class="form-control" id="formGroupExampleInput2" ></textarea>
+    </div>
+     <div class="form-group">
+      <label for="formGroupExampleInput2">Add your photo:</label>
+      <input type="file" name="photo" value="{{user.photo}}">
+    </div>
+    <button  class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </form>
+
+    </div>
+  </div>
