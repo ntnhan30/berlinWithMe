@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-{{!-- <h1>The profile of <strong>{{user.username}}  </strong></h1>
-=======
-<h1>The profile of <strong>{{user.username}} {{user.email}} </strong></h1>
->>>>>>> 8d4c3b88103e20087813e012225c0ad2394aa268
-
-<h3>About me </h3> <p> {{user.info}}</p><br>
-
- <img src="{{user.imgPath}}" alt="">
-
-<h4>My events</h4>
-<ul>
-{{#each user._events}}<br>
-<a href="/events/{{this._id}}">
-{{this.name}}
-</a>
-{{/each}}
-</ul>
-<br><br>
-
-{{#if isUser}}
-<form  action="/{{user._id}}/delete" method="POST">
-    <button >Delete</button>
-    </form><br><br>
-<a href="/profile/{{user._id}}/edit">Edit me!</a>
-{{/if}} --}}
-
 
 <div class="row">
     <div class= "col-md-4 profile-container">
@@ -37,10 +10,6 @@
         <img src="{{user.imgPath}}" class="img-fluid" alt="">
 
         <h3>About me </h3> <p> {{user.info}}</p><br>
-
-        {{!-- <form  action="/{{user._id}}/delete" method="POST">
-            <button class="btn btn-primary" >Delete</button>
-        </form><br><br> --}}
 
     </div>
     <div class="col-md-8 events">
