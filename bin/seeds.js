@@ -1,3 +1,4 @@
+require("dotevn").config();
 const event = require("../data/event");
 const Event= require("../models/Event");
 const user= require("../data/user");
