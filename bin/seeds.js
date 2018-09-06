@@ -5,6 +5,7 @@ const user= require("../data/user");
 const User=require("../models/User")
 const mongoose = require("mongoose");
 
+
 mongoose
   // .connect('mongodb://localhost/berlin')
   .connect(process.env.MONGODB_URI, {useNewUrlParser: true})

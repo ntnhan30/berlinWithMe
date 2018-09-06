@@ -1,9 +1,6 @@
 <header>
 <div class="headerText">
-<h1>Berlin With Me the best</h1>
-</div>
-<div class="headerImg1">
-    <img src="https://media.giphy.com/media/PvKlwYTiKATRe/giphy.gif" alt="">
+<h1>Would you berlin with me?</h1>
 </div>
 </header>
 
@@ -12,15 +9,16 @@
   <input type="text" name="event" placeholder="Events" "form-control-plaintext" id="staticEmail2">
 </form> <br>
 </div>
-
-
-
+  
+ 
+<div class="hoverDiv"> 
 <div class="eventsDiv ">
 {{#each events}}
-<div class="eventDiv">
+<div class="eventDiv card border-dark mb-3">
     <h3>
      <a href="/events/{{this._id}}">
-     {{!-- <a href="/{{this._owner.username}}/events/{{this._id}}"> --}}
+     {{!-- old version
+     <a href="/{{this._owner.username}}/events/{{this._id}}"> --}}
 
 {{this.name}}
     </a> <br>
@@ -34,4 +32,5 @@
 </p>
 </div>
 {{/each}}
+</div>
 </div>

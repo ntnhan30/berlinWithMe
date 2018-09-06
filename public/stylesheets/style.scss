@@ -1,5 +1,11 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import 'homePage.scss';
+
 body {
+<<<<<<< HEAD
+=======
+  // padding: 50px;
+>>>>>>> 58e01509778c24bd5a929844c09cc29efc4d8758
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   // background-color: rgba(255, 255, 255, 0.863);
 }
@@ -8,38 +14,3 @@ a {
   color:gray;
 }
 
-.eventsDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // border: 5px solid rgb(218, 142, 92);
-  width: 100%;
-}
-
-.eventDiv{
-  border: 1px solid rgb(241, 234, 234);
-  width: 70%;
-  margin: 20px;
-  background-color: rgba(255, 255, 255, 0.767);
-  padding: 2%;
-}
-
-header {
-  font-family: 'Shadows Into Light', cursive;
-  background-color: rgb(200, 255, 0);
-  text-align: center;
-  height: 150px;
-}
-
-.eventText{
- width: 80%;
-  border: 5px solid rgb(218, 92, 92);
-}
-
-.searchDiv {
-  // background-color: black;
-  height: 50px;
-  width: 300px;
-  margin: auto;
-  text-align: center;
-}

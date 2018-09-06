@@ -1,4 +1,5 @@
 const express = require('express');
+const nodemailer = require('nodemailer');
 const router = express.Router();
 const Event = require("../models/Event");
 const User = require("../models/User");
@@ -12,7 +13,9 @@ router.get('/', (req, res, next) => {
   Event.find()
     .populate('_owner')
     .then(events => {
-      events.sort(function(a,b){
+      events
+      // .sort('date')
+      .sort(function(a,b){
         return a.date - b.date;
       })
       .map(event => {
@@ -41,7 +44,6 @@ router.get('/events/:id', ensureLoggedIn('/auth/login'), (req, res, next) => {
       let wannaJoin = attendees.map(function (ele) {
         return ele._user._id.toString();
       });
-      
       let joiningList = attendees.slice(0, event.nbPeople);
      
       let WaitingList = attendees.slice(event.nbPeople, wannaJoin.length);
@@ -75,7 +77,7 @@ router.get("/event/add", ensureLoggedIn('/auth/login'), (req, res, next) => {
 })
 
 /*Ana -created the adding rout */
-router.post("/event/adding", (req, res) => {
+router.post("/event/add", (req, res) => {
 
   let newEvent = {
     name: req.body.name,
@@ -205,12 +207,44 @@ router.get('/event/:id/leave', (req, res, next) => {
       }]
     })
     .then((connection) => {
+      WantToGo.find({
+        _event: req.params.id
+      })
+      .populate('_user')
+      .populate('_event')
+      .then(connection=>{
+        let i= connection[0]._event.nbPeople-1;
+        console.log("THIS IS THE PEOPLE WHO just JOIN THE EVENT",connection[i]._user.email);
+        // console.log("THIS IS THE LIST OF PEOPLE WHO ARE GOING", i);
+        let transporter = nodemailer.createTransport({
+          service: 'Gmail',
+          auth: {
+            user: 'nhan.mailbutler@gmail.com',
+            pass: 'hung11223' 
+          }
+        });
+        transporter.sendMail({
+          from: '"Berlin with me" <nhan.mailbutler@gmail.com>',
+          to: connection[i]._user.email, 
+          subject: 'Awesome Subject', 
+          text: 'YOU ARE FCKING IN NOW',
+          html: '<b>YOU ARE FCKING IN NOW</b>'
+        })
+        .then(info => console.log(info))
+        .catch(error => console.log(error))
+     
+     
+     
+     
+     
+      });
       Event.findById(req.params.id)
         .populate('_owner')
         .then(event => {
           res.redirect('/events/' + event._id)
           // res.redirect('/' + event._owner.username + '/events/' + event._id)
-        })
+        });
+
     })
     .catch((error) => {
       console.log(error)
@@ -244,5 +278,10 @@ router.get('/search', (req, res, next) => {
   console.log(error)
 })
 });
+
+// testing email
+router.get("/email", ensureLoggedIn('/auth/login'), (req, res, next) => {
+ 
+})
 
 module.exports = router;

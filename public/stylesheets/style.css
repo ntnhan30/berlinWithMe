@@ -6312,29 +6312,41 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+<<<<<<< HEAD
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: gray; }
 
+=======
+>>>>>>> 58e01509778c24bd5a929844c09cc29efc4d8758
 .eventsDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%; }
 
+.hoverDiv :hover {
+  background-image: url(images/stops.png);
+  background-size: cover; }
+
+.eventDiv:hover {
+  background-image: none; }
+
 .eventDiv {
   border: 1px solid #f1eaea;
-  width: 70%;
+  width: 40%;
   margin: 20px;
-  background-color: rgba(255, 255, 255, 0.767);
   padding: 2%; }
 
 header {
   font-family: 'Shadows Into Light', cursive;
-  background-color: #c8ff00;
   text-align: center;
+  height: 150px; }
+
+header :hover {
+  background-image: url("https://media.giphy.com/media/PvKlwYTiKATRe/giphy.gif");
   height: 150px; }
 
 .eventText {
@@ -6346,5 +6358,11 @@ header {
   width: 300px;
   margin: auto;
   text-align: center; }
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: gray; }
 
 /*# sourceMappingURL=style.css.map */
