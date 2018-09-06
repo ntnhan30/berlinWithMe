@@ -1,25 +1,48 @@
 <h1>Add a new event!</h1>
 
-<form action="/event/adding" method="post">
-  Name: <input type="text" name="name"><br>
-  Location : <select type="text" name="location">
-  <option value="Neukölln‎" >Neukölln‎</option>
-  <option value="Friedrichshain">Friedrichshain</option>
-  <option value="Kreuzberg‎">Kreuzberg‎</option>
-  <option value="Mitte">Mitte</option>
-  <option value="Charlottenburg">Charlottenburg</option>
-  <option value="other">other</option>
-</select>
-  <br>
-  Date: <input type="date" name="date"><br>
-  Time: <input type="time" name="time"><br>
-  Link: <input type="text" name="link"><br>
-  Description: <br>
-   <textarea rows="7" cols="60" type="text" name="description"></textarea><br>
-  Contact <input type="text" name="contact"><br>
-  Number of People  <input type="number" name="nbPeople" placeholder="is required"><br>
-  {{!-- Status of the event  <input type="text" name="status"><br> --}}
-  <button>Add an event!</button>
-</form>
-
-<a href="/">See all events!!</a>
+  <div class="row">
+    <div class="col-md-4 ">
+      <form action="/event/adding" method="post">
+        <div class="form-group">
+          <label for="nameExampleInput">Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput"  type="text" name="name" >
+        </div>
+      <div class="form-group">
+         <label for="formGroupExampleInput2">Location</label>
+        <select type="text" class="form-control" name="location">
+            <option value="Neukölln‎" >Neukölln‎</option>
+            <option value="Friedrichshain">Friedrichshain</option>
+            <option value="Kreuzberg‎">Kreuzberg‎</option>
+            <option value="Mitte">Mitte</option>
+            <option value="Charlottenburg">Charlottenburg</option>
+            <option value="other">other</option>
+        </select>
+          <div class="form-group">
+            <label for="nameExampleInput">Date</label>
+              <input class="form-control" type="date" name="date">
+          </div>
+      <div class="form-group">
+          <label for="nameExampleInput">Time</label>
+      <input class="form-control" type="time" name="time">
+          </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Link</label>
+        <input class="form-control" type="text" name="link">
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Description</label>
+        <textarea rows="7" cols="60" class="form-control" type="text" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Phone number</label>
+        <input type="text" class="form-control" name="phoneNumber">
+      </div>
+      <div class="form-group">
+        <label for="nameExampleInput">Number of people</label>
+        <input type="number" name="nbPeople" placeholder="is required">
+        <button class="btn btn-primary">Add an event!</button>
+      </div>
+      
+        </form>
+      </div>
+    </div>
