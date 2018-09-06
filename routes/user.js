@@ -3,15 +3,9 @@ const router = express.Router();
 const User = require("../models/User");
 const uploadCloud = require('../config/cloudinary.js');
 
-router.get('/user-profile', (req, res, next) => {
-  // User.findById(req.params.id)
-  // .populate('_events')
-  // .then(user => {
-  res.render("user/profile")
-  });
 
-router.get('/profile/:id', (req, res, next) => {
-    User.findById(req.params.id)
+router.get('/profile', (req, res, next) => {
+    User.findById(req.user._id)
     .populate('_events')
     .then(user => {
         res.render("user/profile", {
@@ -22,8 +16,8 @@ router.get('/profile/:id', (req, res, next) => {
       })
   
 
-router.get('/profile/:id/edit', (req, res, next) => {
-  User.findById(req.params.id)
+router.get('/profile/edit', (req, res, next) => {
+  User.findById(req.user._id)
   .then(user=> {
     res.render("user/edit", {user:user})
    
@@ -33,23 +27,18 @@ router.get('/profile/:id/edit', (req, res, next) => {
   })
 });
 
-router.post("/profile/:id/delete", (req, res)=>{
-  User.findByIdAndRemove(req.params.id)
-   .then(user => {
-     res.redirect("/");
-  })
-})
 
 
-router.post('/profile/:id/edit', uploadCloud.single('photo'),(req, res, next) => {
+router.post('/profile/edit', uploadCloud.single('photo'),(req, res, next) => {
     const { username, info } = req.body;
     const imgPath = req.file.url;
     const imgName = req.file.originalname;
-  User.findByIdAndUpdate(req.params.id, {
+  User.findByIdAndUpdate(req.user._id, {
     username,info,imgPath ,imgName 
   } )
   .then((user) => {
-    res.redirect('/profile/'+user._id )
+    res.redirect('/profile' )
+    // res.redirect('/profile/'+user._id )
   })
   .catch((error) => {
     console.log(error)
