@@ -1,7 +1,8 @@
 
 <h1>Edit and event</h1>
 
-<form action="/{{event._owner.username}}/events/{{event._id}}/update" method="post">
+<form action="/events/{{event._id}}/update" method="post">
+{{!-- <form action="/{{event._owner.username}}/events/{{event._id}}/update" method="post"> --}}
   Name: <input type="text" name="name" value="{{event.name}}"><br>
   Street <input type="text" name="street" value="{{event.address.street}}"><br>
   City <input type="text" name="city" value="{{event.address.city}}" ><br>

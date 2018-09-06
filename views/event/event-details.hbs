@@ -34,7 +34,8 @@
     {{/if}}
 
       {{#if isOwner }}
-    <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a>
+    <a href="/events/{{event._id}}/edit">Edit</a>
+    {{!-- <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a> --}}
     <a href="/event/{{event._id}}/delete">Delete</a>
     {{/if}} 
          </div>

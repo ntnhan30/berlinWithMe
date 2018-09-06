@@ -7,7 +7,9 @@
 <h4>My events</h4>
 <ul>
 {{#each user._events}}<br>
+<a href="/events/{{this._id}}">
 {{this.name}}
+</a>
 {{/each}}
 </ul>
 <br><br>

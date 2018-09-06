@@ -16,8 +16,8 @@ router.get('/', (req, res, next) => {
         return a.date - b.date;
       })
       .map(event => {
-        event.hours = event.date.getHours().toString().padStart(2, "0");
-        event.minutes = event.date.getMinutes().toString().padStart(2, "0");
+        // event.hours = event.date.getHours().toString().padStart(2, "0");
+        // event.minutes = event.date.getMinutes().toString().padStart(2, "0");
         event.readableDate = event.date.toString().substring(0,21);
         return event;
       });
@@ -29,7 +29,8 @@ router.get('/', (req, res, next) => {
 });
 
 /* GET event details ****/
-router.get('/:owner/events/:id', ensureLoggedIn('/auth/login'), (req, res, next) => {
+// router.get('/:owner/events/:id', ensureLoggedIn('/auth/login'), (req, res, next) => {
+router.get('/events/:id', ensureLoggedIn('/auth/login'), (req, res, next) => {
   Promise.all([
       Event.findById(req.params.id).populate('_owner'),
       WantToGo.find({
@@ -103,7 +104,8 @@ router.post("/event/adding", (req, res) => {
 });
 
 /* Ana- created the edit route */
-router.get('/:owner/events/:id/edit', (req, res, next) => {
+router.get('/events/:id/edit', (req, res, next) => {
+  // router.get('/:owner/events/:id/edit', (req, res, next) => {
   Event.findById(req.params.id)
     .populate('_owner')
     .then(event => {
@@ -116,7 +118,8 @@ router.get('/:owner/events/:id/edit', (req, res, next) => {
     })
 });
 
-router.post('/:owner/events/:id/update', (req, res, next) => {
+router.post('/events/:id/update', (req, res, next) => {
+  // router.post('/:owner/events/:id/update', (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, {
       name: req.body.name,
       address: {
@@ -161,7 +164,8 @@ router.get('/event/:id/join', (req, res, next) => {
       Event.findById(req.params.id)
         .populate('_owner')
         .then(event => {
-          res.redirect('/' + event._owner.username + '/events/' + event._id)
+          res.redirect('/events/' + event._id)
+          // res.redirect('/' + event._owner.username + '/events/' + event._id)
         })
     })
     .catch((error) => {
@@ -181,7 +185,9 @@ router.get('/event/:id/joinWaittingList', (req, res, next) => {
       Event.findById(req.params.id)
         .populate('_owner')
         .then(event => {
-          res.redirect('/' + event._owner.username + '/events/' + event._id)
+          res.redirect('/events/' + event._id)
+          // res.redirect('/' + event._owner.username + '/events/' + event._id)
+
         })
     })
     .catch((error) => {
@@ -202,7 +208,8 @@ router.get('/event/:id/leave', (req, res, next) => {
       Event.findById(req.params.id)
         .populate('_owner')
         .then(event => {
-          res.redirect('/' + event._owner.username + '/events/' + event._id)
+          res.redirect('/events/' + event._id)
+          // res.redirect('/' + event._owner.username + '/events/' + event._id)
         })
     })
     .catch((error) => {

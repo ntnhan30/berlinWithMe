@@ -19,14 +19,14 @@
 {{#each events}}
 <div class="eventDiv">
     <h3>
-     <a href="/{{this._owner.username}}/events/{{this._id}}">
+     <a href="/events/{{this._id}}">
+     {{!-- <a href="/{{this._owner.username}}/events/{{this._id}}"> --}}
+
 {{this.name}}
     </a> <br>
     </h3>
-    date: {{this.date}} <br>
-    readable date: {{this.readableDate}} <br>
-    joining time: {{this.hours}}:{{this.minutes}}
-<a href="{{this.link}}" target="_blank">Link to the event</a>
+    Date: {{this.readableDate}} <br>
+<a href="{{this.link}}" target="_blank">Link</a>
 <br>
 {{this.location}} <br>
 <p>

@@ -14,8 +14,6 @@ router.get('/profile/:id', (req, res, next) => {
     User.findById(req.params.id)
     .populate('_events')
     .then(user => {
-      console.log("THIS IS CURRENT USER ID", req.user._id);
-      console.log("THIS IS ID FROM URL", req.params.id);
         res.render("user/profile", {
           user:user,
           isUser: req.user._id == req.params.id
