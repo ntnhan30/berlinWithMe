@@ -1,47 +1,78 @@
+<div class="mainEventDetails row">
 
-  <div class="mainEventDetails">
 
-  
-  <div class="eventDetailsDiv card border-dark mb-3">
-    <h3>
-    {{event.name}}
-    </h3>  <br> 
-    {{event.readableDate}} <br> 
-    {{event.location}} <br> 
-    <p> Organizer: {{event._owner.username}} <br>
-     Details: {{event.description}} 
-     </p>
+  <div class="eventDetailsDiv card border-dark mb-3 col-lg-6 col-md-7 col-10">
+    <h3>{{event.name}}</h3>
 
-    <p>
- Attendees:{{#each joiningList}} 
-        <a href="/profile/{{this._user._id}}">
-        {{this._user.username}}
-        </a>
-         {{/each }} <br>
-        WaittingList: {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
-</p> 
-    {{#if isJoined }} 
-    <p>
-   Contact details: {{event.contact}}
+    <table class="table">
+      <tr>
+        <th>Date</th>
+        <td>{{event.readableDate}} </td>
+      </tr>
+      <tr>
+        <th>Location</th>
+        <td>{{event.location}}</td>
+      </tr>
+      <tr>
+        <th>Organizer</th>
+        <td>{{event._owner.username}}</td>
+      </tr>
+      <tr>
+        <th>Details</th>
+        <td>{{event.description}}</td>
+      </tr>
+      <tr>
+        <th>Attendees</th>
+        <td>
+          {{#each joiningList}}
+          <a href="/profile/{{this._user._id}}">{{this._user.username}}</a>
+          <br> {{/each }}
+        </td>
+      </tr>
+      <tr>
+        <th>WaittingList</th>
+        <td>{{#each WaitingList}} {{this._user.username}} <br> {{/each }}</td>
+      </tr>
+     
+      <tr>
+        <th>Link to event</th>
+        <td><a href="{{event.link}}" class="event-link" target="_blank">{{event.link}}</a></td>
+      </tr>
+      
+    </table>
+
+    {{!-- <a href="/event/{{event._id}}/join" class="btn btn-warning">Wanna Join</a> --}}
+
+
+
+
+    {{!-- </h3> <br>
+    <br> {{event.location}} <br>
+    <p> Organizer: {{event._owner.username}} <br> Details: {{event.description}}
     </p>
-    <a href="/event/{{event._id}}/leave">Leave</a>
-     {{else}}
-    {{#if isAvailable }}
-    <a href="/event/{{event._id}}/join">Wanna Join</a>
-     {{else}}
-      {{#if isWaiting }}
-    <a href="/event/{{event._id}}/leave">Leave WaittingList</a>
-     {{else}}
-    <a href="/event/{{event._id}}/joinWaittingList">Join WaittingList</a>
-    {{/if}}
-    {{/if}}
-    {{/if}}
 
-      {{#if isOwner }}
-    <a href="/events/{{event._id}}/edit">Edit</a>
+    <p>
+      Attendees:{{#each joiningList}}
+      <a href="/profile/{{this._user._id}}">
+        {{this._user.username}}
+      </a>
+      {{/each }} <br> WaittingList: {{#each WaitingList}} {{this._user.username}} <br> {{/each }}
+    </p> --}}
+    {{#if isJoined }}
+    <p>
+      Contact details: {{event.contact}}
+    </p>
+    <a href="/event/{{event._id}}/leave" class="btn btn-outline-warning">Leave</a>
+    {{else}} {{#if isAvailable }}
+    <a href="/event/{{event._id}}/join" class="btn btn-outline-warning" >Wanna Join</a>
+    {{else}} {{#if isWaiting }}
+    <a href="/event/{{event._id}}/leave" class="btn btn-outline-warning">Leave WaittingList</a>
+    {{else}}
+    <a href="/event/{{event._id}}/joinWaittingList" class="btn btn-outline-warning">Join WaittingList</a>
+    {{/if}} {{/if}} {{/if}} {{#if isOwner }}
+    <a href="/events/{{event._id}}/edit" class="btn btn-outline-warning">Edit</a>
     {{!-- <a href="/{{event._owner.username}}/events/{{event._id}}/edit">Edit</a> --}}
-    <a href="/event/{{event._id}}/delete">Delete</a>
-    {{/if}} 
-         </div>
-         </div>
-        
+    <a href="/event/{{event._id}}/delete" class="btn btn-outline-warning">Delete</a>
+    {{/if}}
+  </div>
+</div>

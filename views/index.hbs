@@ -6,7 +6,7 @@
 
 <div class="searchDiv">
 <form action="/search" method="get" "form-inline">
-  <input type="text" name="event" placeholder="Events" "form-control-plaintext" id="staticEmail2">
+  <input type="text" name="event" placeholder="Search for events" class="form-control" id="staticEmail2">
 </form> <br>
 </div>
   
@@ -19,17 +19,16 @@
      <a href="/events/{{this._id}}">
      {{!-- old version
      <a href="/{{this._owner.username}}/events/{{this._id}}"> --}}
-
-{{this.name}}
+        {{this.name}}
     </a> <br>
     </h3>
     Date: {{this.readableDate}} <br>
-<a href="{{this.link}}" target="_blank">Link</a>
-<br>
-{{this.location}} <br>
-<p>
-    Organizer :{{this._owner.username}} <br>
-</p>
+    {{this.location}} <br>
+    {{!-- {{this.description}} <br> --}}
+    <a href="{{this.link}}" class="event-link" target="_blank">Link</a>
+    <p class="organizer">
+        Organizer :{{this._owner.username}} <br>
+    </p>
 </div>
 {{/each}}
 </div>
